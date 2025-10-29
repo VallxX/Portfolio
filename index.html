@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Valentin DUMOND</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
+</head>
+
+<body>
+  <!-- Canvas 3D global -->
+  <canvas id="bgCanvas" aria-hidden="true"></canvas>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar">
+      <h1 class="logo">DUMOND<span class="dot">.</span>dev</h1>
+      <ul class="nav-links">
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#skills">Compétences</a></li>
+        <li><a href="#projects">Projets</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h2>Salut 👋, moi c’est <span>Valentin</span></h2>
+      <h3>Étudiant en L2 Informatique à Besançon</h3>
+      <p>Passionné par le développement, la cybersécurité et le hacking éthique.<br>
+         Mon objectif : <strong>devenir pentester</strong>.</p>
+      <div class="hero-ctas">
+        <a href="#projects" class="cta">Voir mes projets</a>
+        <a href="#contact" class="cta ghost">Me contacter</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-img">
+        <img src="assets/img/profile.JPG" alt="Photo de profil">
+      </div>
+      <div class="about-text">
+        <h2>À propos de moi</h2>
+        <p>Je suis <strong>Valentin DUMOND</strong>, étudiant en <strong>L2 Informatique</strong> à l’Université de Besançon. Mon objectif professionnel est de <strong>devenir pentester</strong> et d’évoluer dans le domaine de la cybersécurité offensive.</p>
+        <p>J’apprends les tests d’intrusion, la rétro-ingénierie et l’exploitation (ex : buffer overflow). J’effectue des labs (<strong>OverTheWire</strong>, <strong>TryHackMe</strong>, <strong>HackTheBox</strong>), des audits d’applications PHP/JS et je développe des scripts Python/Bash pour automatiser des tâches d’audit.</p>
+        <p>Sur ce portfolio, je partage mes projets, mes scripts et mes writeups pour documenter ma progression vers le pentest professionnel.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills" id="skills">
+    <h2>Compétences</h2>
+    <div class="skills-container">
+      <div class="skill"><img src="assets/img/linux.png" alt="Linux"><p>Linux — En apprentissage</p></div>
+      <div class="skill"><img src="assets/img/python.png" alt="Python"><p>Python — Bonnes bases</p></div>
+      <div class="skill"><img src="assets/img/c.png" alt="C"><p>C — Gestion mémoire</p></div>
+      <div class="skill"><img src="assets/img/bash.png" alt="Bash"><p>Bash — Scripting</p></div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects" id="projects">
+    <h2>Mes Projets</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="card-thumb" style="background-image:url('assets/img/projet1.jpg')"></div>
+        <div class="card-body">
+          <h3>Bookshop - Site web</h3>
+          <p>Site complet avec interaction avec une base de donée.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="card-thumb" style="background-image:url('assets/img/projet2.jpg')"></div>
+        <div class="card-body">
+          <h3>Script Python — Undercover</h3>
+          <p>Script recodant le jeu Undercover.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="card-thumb" style="background-image:url('assets/img/project3.jpg')"></div>
+        <div class="card-body">
+          <h3>Script shell - Version</h3>
+          <p>Permet de gérer les différentes versions d’un fichier.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="card-thumb" style="background-image:url('assets/img/projet4.jpg')"></div>
+        <div class="card-body">
+          <h3>Site - Jordan</h3>
+          <p>J'ai crée un site web sur la marque de chaussure Jordan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <h2>Contact</h2>
+    <p>Tu veux échanger ou collaborer sur un projet ?</p>
+    <div class="contact-links">
+      <p>Email : <a href="mailto:tenval54@gmail.com">tenval54@gmail.com</a></p>
+      <p>GitHub : <a href="https://github.com/VallxX">github.com/VallxX</a></p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>© 2025 Valentin DUMOND — Portfolio Pentester</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
