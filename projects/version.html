@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Script Bash — Versioning</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+    <header>
+    <nav class="navbar">
+        <h1 class="logo">DUMOND<span class="dot">.</span>dev</h1>
+        <ul class="nav-links">
+        <li><a href="../index.html#projects">Projets</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+    </header>
+
+    <section class="project-page">
+    <div class="container column">
+
+        <h2>Script Bash — Gestion de versions</h2>
+
+        <p class="project-intro">
+        Script Bash reproduisant un système de versioning simplifié,
+        inspiré de Git, entièrement développé en shell.
+        </p>
+
+        <h3>Fonctionnalités</h3>
+        <ul>
+        <li>add, commit, amend</li>
+        <li>diff, checkout</li>
+        <li>log, reset</li>
+        <li>Gestion des erreurs</li>
+        </ul>
+
+        <h3>Architecture</h3>
+        <ul>
+        <li>Dossier <code>.version/</code></li>
+        <li>Fichiers versionnés numérotés</li>
+        <li>Logs horodatés</li>
+        <li>Patches avec diff / patch</li>
+        </ul>
+
+        <h3>Simulation terminal</h3>
+
+        <div class="terminal">
+        <div class="terminal-header">terminal — ./version.sh</div>
+        <div class="terminal-body" id="terminal-version"></div>
+        </div>
+
+        <button class="cta" onclick="runVersion()">Tester le script</button>
+
+        <h3>Compétences mises en œuvre</h3>
+        <ul>
+        <li>Bash</li>
+        <li>Scripting système</li>
+        <li>Automatisation</li>
+        <li>Gestion des erreurs</li>
+        </ul>
+
+    </div>
+    </section>
+
+    <script src="../assets/js/versioning.js"></script>
+</body>
+</html>
