@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Undercover — Python</title>
-  <link rel="stylesheet" href="../assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undercover — Python</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
 </head>
 <body>
-
+    <canvas id="bgCanvas" aria-hidden="true"></canvas>
     <header>
     <nav class="navbar">
         <h1 class="logo">DUMOND<span class="dot">.</span>dev</h1>
@@ -18,56 +20,51 @@
     </header>
 
     <section class="project-page">
-    <div class="container column">
+        <div class="container column">
 
-        <h2>Jeu Undercover — Python</h2>
+            <h2>Jeu Undercover — Python</h2>
 
-        <p class="project-intro">
-        Jeu en ligne de commande développé en Python.
-        Il gère la distribution des rôles, l’attribution des mots,
-        les votes et les conditions de victoire.
-        </p>
+            <p class="project-intro">
+            Jeu en ligne de commande développé en Python.
+            Il gère la distribution des rôles, l’attribution des mots,
+            les votes et les conditions de victoire.
+            </p>
 
-        <h3>Fonctionnalités</h3>
-        <ul>
-        <li>Distribution aléatoire des rôles</li>
-        <li>Attribution de mots proches</li>
-        <li>Validation des indices</li>
-        <li>Système de vote</li>
-        </ul>
+            <h3>Fonctionnalités</h3>
+            <ul>
+                <li>Distribution aléatoire des rôles</li>
+                <li>Attribution de mots proches</li>
+                <li>Validation des indices</li>
+                <li>Système de vote</li>
+            </ul>
 
-        <h3>Extrait du code</h3>
-        <pre class="code-block"><code>
-    def distribute_roles(num_players):
-        roles = ["Innocent"] * (num_players - 2) + ["Undercover", "Mr. White"]
-        random.shuffle(roles)
-        return roles
-        </code></pre>
+            <h3>Simulation terminal</h3>
+            <p>Ce terminal simule le jeu undercover d'une manière simplifié.</p>
+            <div class="terminal">
+                <div class="terminal-header">terminal — python undercover.py</div>
+                <div class="terminal-body" id="terminal-undercover"></div>
+            </div>
+    
+            <button class="cta" id="runGameBtn">Lancer la simulation</button>
+            <button class="cta" id="showCodeBtn">Afficher le code Python</button>
+            <pre id="undercoverCode" style="display:none; height:400px; overflow:auto; border:1px solid #ccc; padding:10px; white-space: pre-wrap;"></pre>
 
-        <h3>Simulation terminal</h3>
+            <h3>Compétences mises en œuvre</h3>
+            <ul>
+                <li>Python</li>
+                <li>Logique algorithmique</li>
+                <li>Gestion des entrées utilisateur</li>
+                <li>Sécurité et validation</li>
+            </ul>
 
-        <div class="terminal">
-        <div class="terminal-header">terminal — python undercover.py</div>
-        <div class="terminal-body" id="terminal-undercover"></div>
         </div>
-
-        <button class="cta" onclick="runUndercover()">Lancer le jeu</button>
-
-        <h3>Compétences mises en œuvre</h3>
-        <ul>
-        <li>Python</li>
-        <li>Logique algorithmique</li>
-        <li>Gestion des entrées utilisateur</li>
-        <li>Sécurité et validation</li>
-        </ul>
-
-    </div>
     </section>
 
     <footer class="site-footer">
-        <p>© 2025 Valentin DUMOND — Portfolio</p>
+        <p>© 2026 Valentin DUMOND — Portfolio</p>
     </footer>
-
+    <script src="../assets/js/main.js"></script>
     <script src="../assets/js/undercover.js"></script>
+</body>
 </body>
 </html>

@@ -1,110 +1,125 @@
 // ============================
-// main.js — Fond 3D interactif
+// main.js — Fond 3D interactif (SAFE MULTI-PAGES)
 // ============================
 
-// Création du canvas global
+/* =====================
+   CANVAS / THREE.JS
+===================== */
 const canvas = document.getElementById('bgCanvas');
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setClearColor(0x000000, 0); // fond transparent
+if (canvas && window.THREE) {
 
-// Scène et caméra
-const scene = new THREE.Scene();
-scene.fog = new THREE.FogExp2(0x000000, 0.004);
+  const renderer = new THREE.WebGLRenderer({
+    canvas,
+    antialias: true,
+    alpha: true
+  });
 
-const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 2000);
-camera.position.set(0, 0, 50);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setClearColor(0x000000, 0);
 
-// Lumière
-const ambient = new THREE.AmbientLight(0xffffff, 0.6);
-const directional = new THREE.DirectionalLight(0xffffff, 0.6);
-directional.position.set(5, 10, 7.5);
-scene.add(ambient, directional);
+  const scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(0x000000, 0.004);
 
-// =====================
-// Particules / étoiles
-// =====================
-const particleCount = 500;
-const particles = new THREE.BufferGeometry();
-const positions = new Float32Array(particleCount * 3);
+  const camera = new THREE.PerspectiveCamera(
+    45,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    2000
+  );
+  camera.position.set(0, 0, 50);
 
-for (let i = 0; i < particleCount * 3; i++) {
-  positions[i] = (Math.random() - 0.5) * 200;
-}
-particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  const ambient = new THREE.AmbientLight(0xffffff, 0.6);
+  const directional = new THREE.DirectionalLight(0xffffff, 0.6);
+  directional.position.set(5, 10, 7.5);
+  scene.add(ambient, directional);
 
-const particleMaterial = new THREE.PointsMaterial({
-  color: 0x00aaff,
-  size: 0.5,
-  transparent: true,
-  opacity: 0.7
-});
+  /* =====================
+     PARTICULES
+  ===================== */
+  const particleCount = 500;
+  const geometry = new THREE.BufferGeometry();
+  const positions = new Float32Array(particleCount * 3);
 
-const particleSystem = new THREE.Points(particles, particleMaterial);
-scene.add(particleSystem);
+  for (let i = 0; i < positions.length; i++) {
+    positions[i] = (Math.random() - 0.5) * 200;
+  }
 
-// =====================
-// Réseau de lignes entre points
-// =====================
-const maxDistance = 15;
-const lineMaterial = new THREE.LineBasicMaterial({ color: 0x00aaff, transparent: true, opacity: 0.1 });
-const lines = [];
+  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
-function createLines() {
-  const positions = particleSystem.geometry.attributes.position.array;
+  const material = new THREE.PointsMaterial({
+    color: 0x00aaff,
+    size: 0.5,
+    transparent: true,
+    opacity: 0.7
+  });
+
+  const particles = new THREE.Points(geometry, material);
+  scene.add(particles);
+
+  /* =====================
+     LIGNES ENTRE POINTS
+  ===================== */
+  const maxDistance = 15;
+  const lineMaterial = new THREE.LineBasicMaterial({
+    color: 0x00aaff,
+    transparent: true,
+    opacity: 0.1
+  });
+
+  const positionsArray = geometry.attributes.position.array;
   for (let i = 0; i < particleCount; i++) {
     for (let j = i + 1; j < particleCount; j++) {
-      const dx = positions[i * 3] - positions[j * 3];
-      const dy = positions[i * 3 + 1] - positions[j * 3 + 1];
-      const dz = positions[i * 3 + 2] - positions[j * 3 + 2];
+      const dx = positionsArray[i*3] - positionsArray[j*3];
+      const dy = positionsArray[i*3+1] - positionsArray[j*3+1];
+      const dz = positionsArray[i*3+2] - positionsArray[j*3+2];
       const dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
+
       if (dist < maxDistance) {
-        const geometry = new THREE.BufferGeometry().setFromPoints([
-          new THREE.Vector3(positions[i*3], positions[i*3+1], positions[i*3+2]),
-          new THREE.Vector3(positions[j*3], positions[j*3+1], positions[j*3+2])
+        const lineGeo = new THREE.BufferGeometry().setFromPoints([
+          new THREE.Vector3(
+            positionsArray[i*3],
+            positionsArray[i*3+1],
+            positionsArray[i*3+2]
+          ),
+          new THREE.Vector3(
+            positionsArray[j*3],
+            positionsArray[j*3+1],
+            positionsArray[j*3+2]
+          )
         ]);
-        const line = new THREE.Line(geometry, lineMaterial);
-        scene.add(line);
-        lines.push(line);
+        scene.add(new THREE.Line(lineGeo, lineMaterial));
       }
     }
   }
+
+  /* =====================
+     ANIMATION
+  ===================== */
+  let mouseX = 0, mouseY = 0;
+  document.addEventListener('mousemove', e => {
+    mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+    mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  function animate() {
+    requestAnimationFrame(animate);
+    scene.rotation.y += 0.001 + mouseX * 0.002;
+    scene.rotation.x += 0.001 + mouseY * 0.002;
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  }, { passive: true });
 }
-createLines();
 
-// =====================
-// Animation
-// =====================
-let mouseX = 0, mouseY = 0;
-document.addEventListener('mousemove', e => {
-  mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-  mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-});
-
-function animate() {
-  requestAnimationFrame(animate);
-
-  // rotation légère selon souris
-  scene.rotation.y += 0.001 + mouseX * 0.002;
-  scene.rotation.x += 0.001 + mouseY * 0.002;
-
-  renderer.render(scene, camera);
-}
-animate();
-
-// =====================
-// Resize
-// =====================
-window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-}, { passive: true });
-
-// =====================
-// Apparition texte au scroll
-// =====================
+/* =====================
+   APPARITION AU SCROLL
+===================== */
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -116,10 +131,14 @@ document.querySelectorAll('section').forEach(section => {
   observer.observe(section);
 });
 
-// Apparition du hero au chargement
+/* =====================
+   HERO (UNIQUEMENT SI EXISTE)
+===================== */
 document.addEventListener("DOMContentLoaded", () => {
   const hero = document.querySelector(".hero-content");
-  hero.style.opacity = 0;
-  hero.style.transition = "opacity 1.5s ease";
-  setTimeout(() => (hero.style.opacity = 1), 300);
+  if (hero) {
+    hero.style.opacity = 0;
+    hero.style.transition = "opacity 1.5s ease";
+    setTimeout(() => (hero.style.opacity = 1), 300);
+  }
 });

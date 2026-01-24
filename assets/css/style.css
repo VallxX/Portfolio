@@ -329,3 +329,110 @@ header, section, footer {
   position: relative;
   z-index: 1;
 }
+
+/* ===========================
+   PROJECT PAGES
+=========================== */
+
+.project-page {
+  padding: 120px 6% 80px;
+}
+  
+.container.column {
+  flex-direction: column;
+  align-items: flex-start;
+}
+  
+.project-page h2 {
+  color: #00aaff;
+  margin-bottom: 1rem;
+}
+  
+.project-page h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  color: #e6eef8;
+}
+  
+.project-intro {
+  color: #ccc;
+  max-width: 700px;
+}
+  
+/* CODE BLOCK */
+.code-block {
+  background: rgba(15, 15, 15, 0.8);
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 10px;
+  box-shadow: 0 0 20px rgba(0, 170, 255, 0.1);
+  overflow-x: auto;
+}
+  
+/* TERMINAL */
+.terminal {
+  background: transparent;
+  border-radius: 10px;
+  font-family: monospace;
+  margin: 2rem 0;
+  box-shadow: 0 0 25px rgba(0,170,255,0.2);
+}
+
+.terminal-header {
+  padding: 0.6rem 1rem;
+  background: rgba(0,170,255,0.15);
+  font-size: 0.9rem;
+  color: #00aaff;
+}
+
+.terminal-body {
+  padding: 1rem;
+  min-height: 200px;
+  max-height: 300px;
+  overflow-y: auto;
+  font-size: 0.9rem;
+}
+
+.terminal-input {
+  display: flex;
+  padding: 0.6rem 1rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.prompt {
+  margin-right: 0.5rem;
+  color: #00aaff;
+}
+
+.terminal-input input {
+  background: transparent;
+  border: none;
+  color: #e6eef8;
+  width: 100%;
+  outline: none;
+  font-family: monospace;
+}
+
+  
+  /* LISTES */
+.project-page ul {
+  margin-left: 20px;
+}
+  
+.project-page li {
+  margin-bottom: 5px;
+}
+  
+/* BUTTON */
+.project-page .cta {
+  margin-top: 15px;
+}
+  
+.terminal-undercover {
+  background: transparent;
+  border: none;
+  color: #e6eef8;
+  width: 100%;
+  outline: none;
+  font-family: monospace;
+}

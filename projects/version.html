@@ -2,67 +2,77 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Script Bash — Versioning</title>
   <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
 </head>
 <body>
-
-    <header>
+  <canvas id="bgCanvas" aria-hidden="true"></canvas>
+  <header>
     <nav class="navbar">
-        <h1 class="logo">DUMOND<span class="dot">.</span>dev</h1>
-        <ul class="nav-links">
+      <h1 class="logo">DUMOND<span class="dot">.</span>dev</h1>
+      <ul class="nav-links">
         <li><a href="../index.html#projects">Projets</a></li>
         <li><a href="../index.html#contact">Contact</a></li>
-        </ul>
+      </ul>
     </nav>
-    </header>
+  </header>
 
-    <section class="project-page">
+  <section class="project-page">
     <div class="container column">
 
-        <h2>Script Bash — Gestion de versions</h2>
+      <h2>Script Bash — Gestion de versions</h2>
 
-        <p class="project-intro">
+      <p class="project-intro">
         Script Bash reproduisant un système de versioning simplifié,
         inspiré de Git, entièrement développé en shell.
-        </p>
+      </p>
 
-        <h3>Fonctionnalités</h3>
-        <ul>
+      <h3>Fonctionnalités</h3>
+      <ul>
         <li>add, commit, amend</li>
         <li>diff, checkout</li>
         <li>log, reset</li>
         <li>Gestion des erreurs</li>
-        </ul>
+      </ul>
 
-        <h3>Architecture</h3>
-        <ul>
-        <li>Dossier <code>.version/</code></li>
-        <li>Fichiers versionnés numérotés</li>
-        <li>Logs horodatés</li>
-        <li>Patches avec diff / patch</li>
-        </ul>
+      <h3>Simulation terminal</h3>
+      <h4>Comment ça marche ?</h4>
+      <p>
+        Ce terminal simule le comportement d’un script Bash de versioning.
+        Les commandes ne sont pas exécutées côté serveur, mais leur logique
+        reproduit des actions simplifiées du script.
+      </p>
 
-        <h3>Simulation terminal</h3>
-
-        <div class="terminal">
-        <div class="terminal-header">terminal — ./version.sh</div>
-        <div class="terminal-body" id="terminal-version"></div>
+      <div class="terminal">
+        <div class="terminal-header">terminal — version.sh</div>
+        <div class="terminal-body" id="terminal"></div>
+        <div class="terminal-input">
+          <span class="prompt">$</span>
+          <input type="text" id="cmd" autocomplete="off" autofocus>
         </div>
+      </div>
 
-        <button class="cta" onclick="runVersion()">Tester le script</button>
+      <button class="cta" id="showScriptBtn">Voir le script version.sh</button>
+      <pre id="scriptContent" style="display:none; height:400px; overflow:auto; border:1px solid #ccc; padding:10px; white-space: pre-wrap;"></pre>
 
-        <h3>Compétences mises en œuvre</h3>
-        <ul>
+      <h3>Compétences mises en œuvre</h3>
+      <ul>
         <li>Bash</li>
         <li>Scripting système</li>
         <li>Automatisation</li>
         <li>Gestion des erreurs</li>
-        </ul>
+      </ul>
 
     </div>
-    </section>
+  </section>
+  <footer class="site-footer">
+    <p>© 2026 Valentin DUMOND — Portfolio</p>
+  </footer>
 
-    <script src="../assets/js/versioning.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/terminal.js"></script>
+  <script src="../assets/js/version.js"></script>
 </body>
 </html>
