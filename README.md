@@ -1,6 +1,6 @@
 # Portfolio de Valentin DUMOND
 
-Salut 👋, moi c’est Valentin, étudiant en **L2 Informatique à Besançon**.  
+Bonjour, moi c’est Valentin, étudiant en **L3 Informatique à Besançon**.  
 Passionné par le développement, la cybersécurité et le hacking éthique. Mon objectif : **devenir pentester**.
 
 ## Aperçu
